@@ -126,7 +126,7 @@ def loocv(data_directory):
 accuracies = loocv(data_directory)
 print("Acuratete LOOCV: ", sum(accuracies) / len(accuracies))
 
-plt.plot(accuracies, color='blue')
+plt.plot(accuracies, marker='o', linestyle='-', color='blue')
 plt.axhline(y=sum(accuracies) / len(accuracies), color='r', linestyle='--', label = 'Acuratete medie')
 plt.xlabel('Iteratii LOOCV')
 plt.ylabel('Acuratete')
