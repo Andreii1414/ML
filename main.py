@@ -85,14 +85,22 @@ test_folder_path = os.path.join(data_directory, "part10")
 test_set = load_emails(test_folder_path)
 
 #Testarea clasificatorului Naive Bayes
-correct_predictions = 0
+predicted_labels = []
 for email, label in test_set:
     predicted_label = classify_naive_bayes(email, spam_word_counts, regular_word_counts, spam_total_words, regular_total_words, spam_email_count, regular_email_count)
     if predicted_label == label:
-        correct_predictions += 1
+        predicted_labels.append(1)
+    else:
+        predicted_labels.append(0)
 
-accuracy = correct_predictions / len(test_set)
-print("Acuratete: ", accuracy)
+print("Acuratete: ", sum(predicted_labels) / len(predicted_labels))
+plt.plot(predicted_labels, marker='o', linestyle = '-', color='green', label = 'Acuratete pe setul de testare')
+plt.axhline(y=sum(predicted_labels) / len(predicted_labels), color='orange', linestyle='--', label = 'Acuratete medie')
+plt.xlabel('Iteratii set de testare')
+plt.ylabel('Acuratete')
+plt.title('Acuratete pe setul de testare')
+plt.legend()
+plt.show()
 
 def loocv(data_directory):
     accuracies = []
@@ -126,7 +134,7 @@ def loocv(data_directory):
 accuracies = loocv(data_directory)
 print("Acuratete LOOCV: ", sum(accuracies) / len(accuracies))
 
-plt.plot(accuracies, marker='o', linestyle='-', color='blue')
+plt.plot(accuracies, marker='o', linestyle = '-', color='blue')
 plt.axhline(y=sum(accuracies) / len(accuracies), color='r', linestyle='--', label = 'Acuratete medie')
 plt.xlabel('Iteratii LOOCV')
 plt.ylabel('Acuratete')
