@@ -1,5 +1,8 @@
 # ML
 
+Tema practica - Socoteala Andrei-Alin, Adascalitei Robert-Marian
+
+
 Studiați, din punct de vedere teoretic și experimental, gradul de adaptare/adecvare al algoritmilor studiați până acum în raport cu problema de clasificare a email-urilor spam pentru setul de date Ling-Spam:
 http://www.aueb.gr/users/ion/data/lingspam_public.tar.gz.
 
